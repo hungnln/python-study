@@ -1,0 +1,5 @@
+.venv
+poetry.lock
+.python-version
+serviceAccountKey.json
+.env
