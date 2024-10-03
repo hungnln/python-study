@@ -7,15 +7,45 @@
   "servers": [
     {
       "url": "http://localhost:5000"
+    },
+    {
+      "url": "http://localhost:5000"
     }
   ],
   "tags": [
     {
-      "name": "book",
-      "description": "CRUD Operations"
+      "name": "authenticate",
+      "description": "Authentication"
     }
   ],
   "paths": {
+    "/login-firebase": {
+      "post": {
+        "tags": [
+          "authenticate"
+        ],
+        "summary": "Login with firebase",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "token": {
+                    "type": "string",
+                    "format": "uuid",
+                    "example": ""
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {}
+        }
+      }
+    },
     "/books": {
       "get": {
         "tags": [
@@ -64,7 +94,8 @@
                   "type": "object",
                   "properties": {
                     "token": {
-                      "type": "string"
+                      "type": "string",
+                      "example": "2"
                     }
                   }
                 }
@@ -210,6 +241,12 @@
             "example": "Java"
           }
         }
+      },
+      "uuid": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+        "maxLength": 36,
+        "minLength": 36
       }
     }
   }
